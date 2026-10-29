@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;91ee4148cc0ad8593edb971c72cee71afa88a0a3ea7401607108e36ae3bcc50a;C:/Users/rakes/Downloads/employee-management-system-complete/frontend/src/app/login.component.ts"],
+  "sourcesContent": ["\n\n    .password-wrapper {\n      position: relative;\n      width: 100%;\n    }\n\n    .password-wrapper input {\n      width: 100%;\n      padding-right: 45px;\n      box-sizing: border-box;\n    }\n\n    .password-toggle {\n      position: absolute;\n      right: 8px;\n      top: 50%;\n      transform: translateY(-50%);\n\n      border: none;\n      background: transparent;\n\n      width: 32px;\n      height: 32px;\n\n      display: flex;\n      align-items: center;\n      justify-content: center;\n\n      cursor: pointer;\n\n      color: #6b7280;\n    }\n\n    .password-toggle:hover {\n      color: #2563eb;\n    }\n\n    .password-toggle:focus {\n      outline: 2px solid #2563eb;\n      outline-offset: 2px;\n      border-radius: 4px;\n    }\n\n    .error {\n      color: #dc2626;\n      font-size: 13px;\n      margin-top: 5px;\n      display: block;\n    }\n\n  "],
+  "mappings": ";AAEI,CAAC;AACC,YAAU;AACV,SAAO;AACT;AAEA,CALC,iBAKiB;AAChB,SAAO;AACP,iBAAe;AACf,cAAY;AACd;AAEA,CAAC;AACC,YAAU;AACV,SAAO;AACP,OAAK;AACL,aAAW,WAAW;AAEtB,UAAQ;AACR,cAAY;AAEZ,SAAO;AACP,UAAQ;AAER,WAAS;AACT,eAAa;AACb,mBAAiB;AAEjB,UAAQ;AAER,SAAO;AACT;AAEA,CArBC,eAqBe;AACd,SAAO;AACT;AAEA,CAzBC,eAyBe;AACd,WAAS,IAAI,MAAM;AACnB,kBAAgB;AAChB,iBAAe;AACjB;AAEA,CAAC;AACC,SAAO;AACP,aAAW;AACX,cAAY;AACZ,WAAS;AACX;",
+  "names": []
+}

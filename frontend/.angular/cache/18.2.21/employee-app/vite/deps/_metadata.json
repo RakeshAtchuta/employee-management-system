@@ -1,0 +1,130 @@
+{
+  "hash": "dcb3d5c2",
+  "configHash": "9f26be7e",
+  "lockfileHash": "789fe5a7",
+  "browserHash": "8ca639e9",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "b3003495",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "d98c1db6",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "7af5204c",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "98a9b2dd",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "3119980a",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "536e0fce",
+      "needsInterop": false
+    },
+    "primeng/table": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-table.mjs",
+      "file": "primeng_table.js",
+      "fileHash": "28997900",
+      "needsInterop": false
+    },
+    "primeng/button": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-button.mjs",
+      "file": "primeng_button.js",
+      "fileHash": "94249b5f",
+      "needsInterop": false
+    },
+    "primeng/inputtext": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-inputtext.mjs",
+      "file": "primeng_inputtext.js",
+      "fileHash": "5ab86dcf",
+      "needsInterop": false
+    },
+    "primeng/dialog": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-dialog.mjs",
+      "file": "primeng_dialog.js",
+      "fileHash": "7e1c7be3",
+      "needsInterop": false
+    },
+    "primeng/api": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-api.mjs",
+      "file": "primeng_api.js",
+      "fileHash": "2c28f163",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "d8dfc33b",
+      "needsInterop": false
+    },
+    "primeng/confirmdialog": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-confirmdialog.mjs",
+      "file": "primeng_confirmdialog.js",
+      "fileHash": "4ca871f4",
+      "needsInterop": false
+    },
+    "primeng/toast": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-toast.mjs",
+      "file": "primeng_toast.js",
+      "fileHash": "cc97a048",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-TARE5HMN": {
+      "file": "chunk-TARE5HMN.js"
+    },
+    "chunk-5DXRQQEC": {
+      "file": "chunk-5DXRQQEC.js"
+    },
+    "chunk-VPFLRBDO": {
+      "file": "chunk-VPFLRBDO.js"
+    },
+    "chunk-AFLWKAV5": {
+      "file": "chunk-AFLWKAV5.js"
+    },
+    "chunk-2FJMGO7V": {
+      "file": "chunk-2FJMGO7V.js"
+    },
+    "chunk-F2F67LFN": {
+      "file": "chunk-F2F67LFN.js"
+    },
+    "chunk-ZFUQBNFF": {
+      "file": "chunk-ZFUQBNFF.js"
+    },
+    "chunk-ERAZYSVO": {
+      "file": "chunk-ERAZYSVO.js"
+    },
+    "chunk-HVOX7SHY": {
+      "file": "chunk-HVOX7SHY.js"
+    },
+    "chunk-74VA5E62": {
+      "file": "chunk-74VA5E62.js"
+    },
+    "chunk-2WDSK4Z4": {
+      "file": "chunk-2WDSK4Z4.js"
+    },
+    "chunk-PR7BJRWE": {
+      "file": "chunk-PR7BJRWE.js"
+    }
+  }
+}

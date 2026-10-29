@@ -1,0 +1,1239 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div class="page">
+
+  <!-- ===================================================== -->
+  <!-- PAGE HEADER -->
+  <!-- ===================================================== -->
+
+  <div class="page-header">
+
+    <div>
+      <h2>Employees</h2>
+      <p>Manage employee information</p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      label="Add Employee"
+      icon="pi pi-plus"
+      (click)="open()">
+    </button>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- SEARCH -->
+  <!-- ===================================================== -->
+
+  <div class="toolbar">
+
+    <input
+      pInputText
+      type="text"
+      placeholder="Search employees..."
+      [(ngModel)]="search"
+      (input)="load()"
+      style="width: 300px;"
+    />
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- EMPLOYEE TABLE -->
+  <!-- ===================================================== -->
+
+  <p-table
+    #dt
+    [value]="employees"
+    [paginator]="true"
+    [rows]="10"
+    [loading]="false"
+    responsiveLayout="scroll"
+    styleClass="p-datatable-sm p-datatable-gridlines">
+
+    <ng-template pTemplate="header">
+
+      <!-- COLUMN HEADERS -->
+
+      <tr>
+
+        <th pSortableColumn="employee_id">
+          Employee ID
+          <p-sortIcon field="employee_id"></p-sortIcon>
+        </th>
+
+        <th pSortableColumn="first_name">
+          Name
+          <p-sortIcon field="first_name"></p-sortIcon>
+        </th>
+
+        <th>
+          Email
+        </th>
+
+        <th>
+          Gender
+        </th>
+
+        <th pSortableColumn="department_name">
+          Department
+          <p-sortIcon field="department_name"></p-sortIcon>
+        </th>
+
+        <th>
+          Company
+        </th>
+
+        <th>
+          Designation
+        </th>
+
+        <th>
+          Employee Type
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Date of Joining
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Actions
+        </th>
+
+      </tr>
+
+
+      <!-- COLUMN FILTERS -->
+
+      <tr>
+
+        <!-- Employee ID -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Filter ID"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'employee_id',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Name -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Filter name"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'first_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Email -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Filter email"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'email',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Gender -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Gender"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'gender',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Department -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Department"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'department_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Company -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Company"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'company_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Designation -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Designation"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'designation_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Employee Type -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Employee Type"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'employee_type_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Location -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Location"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'location_name',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Date -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Date"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'date_of_joining',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Status -->
+        <th>
+          <input
+            pInputText
+            type="text"
+            placeholder="Status"
+            (input)="dt.filter(
+              $any($event.target).value,
+              'status',
+              'contains'
+            )"
+            style="width: 100%;"
+          />
+        </th>
+
+
+        <!-- Actions -->
+        <th></th>
+
+      </tr>
+
+    </ng-template>
+
+
+    <!-- ===================================================== -->
+    <!-- TABLE BODY -->
+    <!-- ===================================================== -->
+
+    <ng-template pTemplate="body" let-e>
+
+      <tr>
+
+        <!-- Employee ID -->
+        <td>
+          <strong>
+            {{ e.employee_id }}
+          </strong>
+        </td>
+
+
+        <!-- Name -->
+        <td>
+          {{ e.first_name }} {{ e.last_name }}
+        </td>
+
+
+        <!-- Email -->
+        <td>
+          {{ e.email }}
+        </td>
+
+
+        <!-- Gender -->
+        <td>
+          {{ e.gender }}
+        </td>
+
+
+        <!-- Department -->
+        <td>
+          {{ e.department_name }}
+        </td>
+
+
+        <!-- Company -->
+        <td>
+          {{ e.company_name }}
+        </td>
+
+
+        <!-- Designation -->
+        <td>
+          {{ e.designation_name }}
+        </td>
+
+
+        <!-- Employee Type -->
+        <td>
+          {{ e.employee_type_name }}
+        </td>
+
+
+        <!-- Location -->
+        <td>
+          {{ e.location_name }}
+        </td>
+
+
+        <!-- Date of Joining -->
+        <td>
+          {{ e.date_of_joining | date:'dd-MM-yyyy' }}
+        </td>
+
+
+        <!-- Status -->
+        <td>
+
+          <span
+            [style.color]="
+              e.status === 'Active'
+                ? 'green'
+                : 'red'
+            "
+            style="font-weight: 600;">
+
+            {{ e.status }}
+
+          </span>
+
+        </td>
+
+
+        <!-- Actions -->
+        <td>
+
+          <!-- View -->
+          <button
+            pButton
+            type="button"
+            icon="pi pi-eye"
+            class="p-button-sm p-button-text"
+            title="View"
+            (click)="view(e)">
+          </button>
+
+
+          <!-- Edit -->
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-sm p-button-text"
+            title="Edit"
+            (click)="edit(e)">
+          </button>
+
+
+          <!-- Delete -->
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-sm p-button-text p-button-danger"
+            title="Delete"
+            (click)="remove(e.id)">
+          </button>
+
+        </td>
+
+      </tr>
+
+    </ng-template>
+
+
+    <!-- EMPTY MESSAGE -->
+
+    <ng-template pTemplate="emptymessage">
+
+      <tr>
+
+        <td
+          colspan="12"
+          style="text-align: center; padding: 30px;">
+
+          No employees found.
+
+        </td>
+
+      </tr>
+
+    </ng-template>
+
+  </p-table>
+
+
+  <!-- ===================================================== -->
+  <!-- ADD / EDIT EMPLOYEE DIALOG -->
+  <!-- ===================================================== -->
+
+  <p-dialog
+    [(visible)]="show"
+    [modal]="true"
+    [style]="{width: '750px'}"
+    [header]="editing ? 'Edit Employee' : 'Add Employee'"
+    [draggable]="false"
+    [resizable]="false">
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="save()">
+
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        ">
+
+
+        <!-- Employee ID -->
+
+        <div class="field">
+
+          <label>
+            Employee ID *
+          </label>
+
+          <input
+            pInputText
+            type="text"
+            formControlName="employee_id"
+            style="width: 100%;"
+          />
+
+          <small
+            *ngIf="
+              form.controls.employee_id.touched &&
+              form.controls.employee_id.hasError('required')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Employee ID is required.
+          </small>
+
+          <small
+            *ngIf="
+              form.controls.employee_id.hasError('duplicate')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Employee ID already exists.
+          </small>
+
+        </div>
+
+
+        <!-- First Name -->
+
+        <div class="field">
+
+          <label>
+            First Name *
+          </label>
+
+          <input
+            pInputText
+            type="text"
+            formControlName="first_name"
+            style="width: 100%;"
+          />
+
+          <small
+            *ngIf="
+              form.controls.first_name.touched &&
+              form.controls.first_name.hasError('required')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            First Name is required.
+          </small>
+
+        </div>
+
+
+        <!-- Last Name -->
+
+        <div class="field">
+
+          <label>
+            Last Name *
+          </label>
+
+          <input
+            pInputText
+            type="text"
+            formControlName="last_name"
+            style="width: 100%;"
+          />
+
+          <small
+            *ngIf="
+              form.controls.last_name.touched &&
+              form.controls.last_name.hasError('required')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Last Name is required.
+          </small>
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="field">
+
+          <label>
+            Email *
+          </label>
+
+          <input
+            pInputText
+            type="email"
+            formControlName="email"
+            style="width: 100%;"
+          />
+
+          <small
+            *ngIf="
+              form.controls.email.touched &&
+              form.controls.email.hasError('required')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Email is required.
+          </small>
+
+          <small
+            *ngIf="
+              form.controls.email.touched &&
+              form.controls.email.hasError('email')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Please enter a valid email address.
+          </small>
+
+          <small
+            *ngIf="
+              form.controls.email.hasError('duplicate')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Email address already exists.
+          </small>
+
+        </div>
+
+
+        <!-- Mobile -->
+
+        <div class="field">
+
+          <label>
+            Mobile *
+          </label>
+
+          <input
+            pInputText
+            type="text"
+            maxlength="10"
+            formControlName="mobile_number"
+            style="width: 100%;"
+          />
+
+          <small
+            *ngIf="
+              form.controls.mobile_number.touched &&
+              form.controls.mobile_number.hasError('required')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Mobile number is required.
+          </small>
+
+          <small
+            *ngIf="
+              form.controls.mobile_number.touched &&
+              form.controls.mobile_number.hasError('pattern')
+            "
+            style="
+              display: block;
+              color: #dc2626;
+              margin-top: 5px;
+            ">
+            Mobile number must contain exactly 10 digits.
+          </small>
+
+        </div>
+
+
+        <!-- Gender -->
+
+        <div class="field">
+
+          <label>
+            Gender *
+          </label>
+
+          <select
+            formControlName="gender"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option value="Male">
+              Male
+            </option>
+
+            <option value="Female">
+              Female
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Date of Birth -->
+
+        <div class="field">
+
+          <label>
+            Date of Birth *
+          </label>
+
+          <input
+            pInputText
+            type="date"
+            formControlName="date_of_birth"
+            style="width: 100%;"
+          />
+
+        </div>
+
+
+        <!-- Date of Joining -->
+
+        <div class="field">
+
+          <label>
+            Date of Joining *
+          </label>
+
+          <input
+            pInputText
+            type="date"
+            formControlName="date_of_joining"
+            style="width: 100%;"
+          />
+
+        </div>
+
+
+        <!-- Department -->
+
+        <div class="field">
+
+          <label>
+            Department *
+          </label>
+
+          <select
+            formControlName="department"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option [ngValue]="null">
+              Select Department
+            </option>
+
+            <option
+              *ngFor="let d of departments"
+              [ngValue]="d.id">
+
+              {{ d.name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Company -->
+
+        <div class="field">
+
+          <label>
+            Company *
+          </label>
+
+          <select
+            formControlName="company"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option [ngValue]="null">
+              Select Company
+            </option>
+
+            <option
+              *ngFor="let c of companies"
+              [ngValue]="c.id">
+
+              {{ c.name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Designation -->
+
+        <div class="field">
+
+          <label>
+            Designation *
+          </label>
+
+          <select
+            formControlName="designation"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option [ngValue]="null">
+              Select Designation
+            </option>
+
+            <option
+              *ngFor="let d of designations"
+              [ngValue]="d.id">
+
+              {{ d.name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Employee Type -->
+
+        <div class="field">
+
+          <label>
+            Employee Type *
+          </label>
+
+          <select
+            formControlName="employee_type"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option [ngValue]="null">
+              Select Employee Type
+            </option>
+
+            <option
+              *ngFor="let et of employeeTypes"
+              [ngValue]="et.id">
+
+              {{ et.name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Location -->
+
+        <div class="field">
+
+          <label>
+            Location *
+          </label>
+
+          <select
+            formControlName="location"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option [ngValue]="null">
+              Select Location
+            </option>
+
+            <option
+              *ngFor="let l of locations"
+              [ngValue]="l.id">
+
+              {{ l.name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="field">
+
+          <label>
+            Status *
+          </label>
+
+          <select
+            formControlName="status"
+            style="
+              width: 100%;
+              padding: 9px;
+            ">
+
+            <option value="Active">
+              Active
+            </option>
+
+            <option value="Inactive">
+              Inactive
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADD / EDIT BUTTONS -->
+
+      <div
+        style="
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+          margin-top: 25px;
+        ">
+
+        <button
+          pButton
+          type="button"
+          label="Cancel"
+          class="p-button-secondary"
+          (click)="show=false">
+        </button>
+
+        <button
+          pButton
+          type="submit"
+          label="Save"
+          icon="pi pi-check"
+        >
+        </button>
+
+      </div>
+
+    </form>
+
+  </p-dialog>
+
+
+  <!-- ===================================================== -->
+  <!-- VIEW EMPLOYEE DIALOG -->
+  <!-- ===================================================== -->
+
+  <p-dialog
+    [(visible)]="showView"
+    [modal]="true"
+    [style]="{width: '700px'}"
+    header="Employee Details"
+    [draggable]="false"
+    [resizable]="false">
+
+    <div
+      *ngIf="selectedEmployee"
+      class="view-details">
+
+
+      <!-- Employee ID -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Employee ID
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.employee_id }}
+        </span>
+
+      </div>
+
+
+      <!-- First Name -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          First Name
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.first_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Last Name -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Last Name
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.last_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Email -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Email
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.email }}
+        </span>
+
+      </div>
+
+
+      <!-- Mobile -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Mobile
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.mobile_number }}
+        </span>
+
+      </div>
+
+
+      <!-- Gender -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Gender
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.gender }}
+        </span>
+
+      </div>
+
+
+      <!-- Date of Birth -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Date of Birth
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.date_of_birth | date:'dd-MM-yyyy' }}
+        </span>
+
+      </div>
+
+
+      <!-- Date of Joining -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Date of Joining
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.date_of_joining | date:'dd-MM-yyyy' }}
+        </span>
+
+      </div>
+
+
+      <!-- Department -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Department
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.department_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Company -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Company
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.company_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Designation -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Designation
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.designation_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Employee Type -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Employee Type
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.employee_type_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Location -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Location
+        </span>
+
+        <span class="view-value">
+          {{ selectedEmployee.location_name }}
+        </span>
+
+      </div>
+
+
+      <!-- Status -->
+
+      <div class="view-item">
+
+        <span class="view-label">
+          Status
+        </span>
+
+        <span
+          class="view-value"
+          [style.color]="
+            selectedEmployee.status === 'Active'
+              ? 'green'
+              : 'red'
+          "
+          style="font-weight: 600;">
+
+          {{ selectedEmployee.status }}
+
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- VIEW DIALOG FOOTER -->
+
+    <div
+      style="
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+      ">
+
+      <button
+        pButton
+        type="button"
+        label="Close"
+        icon="pi pi-times"
+        class="p-button-secondary"
+        (click)="closeView()">
+      </button>
+
+    </div>
+
+  </p-dialog>
+
+</div><p-confirmDialog></p-confirmDialog>
+
