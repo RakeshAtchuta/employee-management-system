@@ -1,65 +1,160 @@
 # Employee Management System
 
-Technical assignment implementation using Angular + PrimeNG, Django REST Framework, and PostgreSQL.
+An Employee Management System developed as a technical assignment using **Angular, PrimeNG, Django REST Framework, and PostgreSQL**.
+
+The application helps manage employee records, departments, companies, and related master data through a centralized web interface.
 
 ## Features
-- Login using Django authentication
-- Dashboard summary
-- Employee CRUD
-- Department CRUD
-- Company CRUD
-- Master data CRUD
-- Search, sorting and pagination on employee/department/company tables
-- Reactive-form validation
-- REST APIs
-- PostgreSQL relationships
-- Responsive enterprise-style UI
-- JWT authentication
-- Centralized Angular API service pattern
-- Soft-delete style status handling for employees
 
-## Project structure
-- `backend/` Django REST API
-- `frontend/` Angular application
-- `database/` PostgreSQL setup
+- **Authentication:** Login using Django authentication and JWT authentication.
+- **Dashboard:** Dashboard summary and metrics.
+- **Employee Management:** Create, view, update, and manage employee records.
+- **Department Management:** Manage departments.
+- **Company Management:** Manage company records.
+- **Master Data Management:** Manage designations, locations, and employee types.
+- **Search, Sorting & Pagination:** Available on employee, department, and company tables.
+- **Form Validation:** Reactive forms with validation.
+- **REST API Integration:** Centralized Angular API service pattern.
+- **Database:** PostgreSQL with relational data management.
+- **Employee Status Handling:** Soft-delete-style status handling for employees.
+- **UI:** Responsive, enterprise-style interface.
 
-## Backend setup
-1. Create PostgreSQL database `employee_management`.
-2. Copy `backend/.env.example` to `backend/.env` and set database values.
-3. Create a Python virtual environment:
-   `python -m venv venv`
-4. Activate it.
-5. Install dependencies:
-   `pip install -r backend/requirements.txt`
-6. Run:
-   `python backend/manage.py migrate`
-7. Create an admin user:
-   `python backend/manage.py createsuperuser`
-8. Start:
-   `python backend/manage.py runserver`
+## Tech Stack
 
-## Frontend setup
-1. Install Node.js.
-2. From `frontend/`, run:
-   `npm install`
-3. Start:
-   `npm start`
+- **Frontend:** Angular, TypeScript, PrimeNG
+- **Backend:** Python, Django, Django REST Framework
+- **Database:** PostgreSQL
+- **Authentication:** JWT
+- **API:** REST
 
-The Angular app expects the backend at `http://127.0.0.1:8000`.
+## Project Structure
 
-## Demo login
-Create your own Django superuser with `createsuperuser`, then use those credentials in the login screen.
+```text
+employee-management-system/
+├── backend/
+├── frontend/
+├── database/
+│   └── schema.sql
+└── README.md
+```
 
-## API
-- POST `/api/auth/login/`
-- GET/POST `/api/employees/`
-- GET/PUT/PATCH/DELETE `/api/employees/<id>/`
-- GET/POST `/api/departments/`
-- GET/POST `/api/companies/`
-- GET/POST `/api/designations/`
-- GET/POST `/api/locations/`
-- GET/POST `/api/employee-types/`
-- GET `/api/dashboard/`
+## Prerequisites
+
+Install the following before running the project:
+
+- Python
+- Node.js and npm
+- PostgreSQL
+- Git
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/RakeshAtchuta/employee-management-system.git
+cd employee-management-system
+```
+
+### 2. Backend Setup
+
+Create and activate a Python virtual environment from the project root.
+
+**Windows PowerShell:**
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+Install backend dependencies:
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+Configure PostgreSQL:
+
+1. Create a PostgreSQL database named `employee_management`.
+2. Copy `backend/.env.example` to `backend/.env`.
+3. Configure the required database settings and other environment variables.
+4. Keep credentials private.
+
+Run database migrations:
+
+```bash
+python backend/manage.py migrate
+```
+
+Create an administrator account:
+
+```bash
+python backend/manage.py createsuperuser
+```
+
+Start the backend:
+
+```bash
+python backend/manage.py runserver
+```
+
+### 3. Frontend Setup
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+The Angular application expects the backend API at:
+
+`http://127.0.0.1:8000`
+
+Ensure the backend is running before using the application.
+
+## Demo Login
+
+Create your own Django superuser using the `createsuperuser` command and use the configured credentials if your login implementation supports them.
+
+Do not publish passwords or access tokens.
+
+## API Endpoints
+
+Base URL: `http://127.0.0.1:8000/api`
+
+| Resource | Endpoint |
+|---|---|
+| Authentication | `POST /auth/login/` |
+| Employees | `/employees/` |
+| Departments | `/departments/` |
+| Companies | `/companies/` |
+| Designations | `/designations/` |
+| Locations | `/locations/` |
+| Employee Types | `/employee-types/` |
+| Dashboard | `GET /dashboard/` |
+
+Employee detail endpoint:
+
+`/employees/<id>/`
+
+Supported operations depend on the configured backend routes and permissions.
+
+## Database
+
+PostgreSQL is used for persistent storage and relational data management.
+
+Database setup resources are available in the `database/` directory.
 
 ## Notes
-The reference screenshots in the assignment are design references; this implementation uses its own enterprise-style layout.
+
+- The frontend and backend must be configured correctly to communicate.
+- Configure environment variables before running the backend.
+- The assignment reference screenshots are design references; this implementation uses its own enterprise-style layout.
+
+## Author
+
+**Rakesh Atchuta**
+
+GitHub: https://github.com/RakeshAtchuta
